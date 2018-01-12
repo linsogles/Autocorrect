@@ -1,0 +1,6 @@
+package program1;
+import java.io.File;
+public class Dictionary {
+    File myFile = new File ("words.txt");
+    
+}
