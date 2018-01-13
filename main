@@ -42,3 +42,10 @@ public class Program1 {
       }
     } 
 }
+
+/* debug main method for checking method checkTwoWords
+        Scanner kb = new Scanner (System.in);
+        String word1 = kb.nextLine();
+        String word2 = kb.nextLine();
+        System.out.println(Dictionary.checkTwoWords(word1,word2));
+*/
