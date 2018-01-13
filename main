@@ -1,3 +1,12 @@
+
+
+
+
+
+
+
+
+
 package program1;
 import java.util.Scanner;
 public class Program1 {
@@ -8,6 +17,9 @@ public class Program1 {
         Scanner keyboard = new Scanner (System.in);
         String input;	// allows user input as string
         input = keyboard.nextLine(); 
+        
+        //grabs text message
+        int message = TextMessage.typedWord(input, input-1);                        //ERROR: bad operand types
         if(input.equals("done")){ //exits the system
           break;
         }       
