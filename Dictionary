@@ -2,12 +2,16 @@ package program1;
 import java.io.File;
 public class Dictionary
 {
-    public static String checkWord(String dictWord, String wordToCheck, int place)
+    public static String checkTwoWords(String dictWord, String wordToCheck)
     {
-     
+        if (dictWord.equals(wordToCheck))
+        {
+            return dictWord;
+        }
+        
         int difs = 0; //allow for only one difference btwn words
         
-        while (difs <2) //while there is fewer than 2 differences found
+        while (difs < 2) //while there is fewer than 2 differences found
         {
             for (int n = 0; n < wordToCheck.length(); n++) //for all characters in word
             {
@@ -15,13 +19,13 @@ public class Dictionary
                 {
                     difs++; //add a difference found
                 }
-                if (difs > 2) //if more than 2 differences found
+                if (difs > 1) //if more than 1 difference found
                 {
                     return dictWord;
                 }
             }
         }
-
+        
         return "";
     }
 }
