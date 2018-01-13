@@ -3,6 +3,26 @@ import java.util.Scanner;
 public class Program1 {
 
     public static void main(String[] args) {
+    
+       //Convert words.txt to ArrayList.
+        
+        File wordsFile = new File ("words.txt"); //create file object to retrieve from words.txt
+        ArrayList<String> wordsArray = new ArrayList<String>(); //initialize array for holding words.txt
+        
+        if (wordsFile.exists())
+        {
+            Scanner fileRead = new Scanner(wordsFile); //create scanner using data from .txt file
+            
+            while (fileRead.hasNext())
+            {
+                wordsArray.add(fileRead.nextLine());
+            }
+        }
+        else
+        {
+            //FileNotFoundException
+        }
+    
        while(true){
         System.out.println("Enter a text message, or type done to exit:"); //prompts user
         Scanner keyboard = new Scanner (System.in);
