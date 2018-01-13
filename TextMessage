@@ -1,5 +1,8 @@
 package program1;
 
 public class TextMessage {
-    
+    public static int typedWord (int[] userWord, int arrayPos, String input) {
+        
+        return userWord[arrayPos];
+    }
 }
