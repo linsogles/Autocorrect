@@ -2,47 +2,26 @@ package program1;
 import java.io.File;
 public class Dictionary
 {
-
-    public static boolean doesWordMatch(String dictWord, String wordToCheck)
+    public static boolean checkWord(String dictWord, String wordToCheck, int place)
     {
-        boolean matches = true;
+     
+        int difs = 0; //allow for only one difference btwn words
         
-        for (int i = 0; i < wordToCheck.length()-1; i++) //start checking characters
+        while (difs <2) //while there is fewer than 2 differences found
         {
-            if (wordToCheck.charAt(i) != dictWord.charAt(i)) //if the character at an index is different btwn words
+            for (int n = 0; n < wordToCheck.length(); n++) //for all characters in word
             {
-                for (int n = i; n < wordToCheck.length()-1; n++) //continue checking characters
+                if (dictWord.charAt(n) != wordToCheck.charAt(n)) //if words are different at character
                 {
-                    if (wordToCheck.charAt(n) == dictWord.charAt(n))
-                    {
-                        //Basically if the word is the same at every other character, return it.
-                        //If the word is different at another character, end the loop.
-                    }
+                    difs++; //add a difference found
                 }
-            } 
+                if (difs > 2) //if more than 2 differences found
+                {
+                    return false;
+                }
+            }
         }
-        
-        return matches;
-    }
-    
-    public static String checkWord(ArrayList<String> words, String wordToCheck, int start)
-    {
-        String output = "";
-        
-        String dictWord = words.get(0);
-        
 
-
-        
-        if (start == wordToCheck.length()-1)
-        {
-            
-        }
-        else
-        {
-           
-        }   
-        
-        return output + " " + checkWord(words, wordToCheck, start+1);
+        return true;
     }
 }
