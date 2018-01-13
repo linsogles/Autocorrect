@@ -28,4 +28,18 @@ public class Dictionary
         
         return "";
     }
+    
+    //Incomplete recursive method to check user input word against all dictionary words.
+    public static String checkUserWord(ArrayList<String> words, String input, int arrayPlace)
+    {
+        String output = "";
+        
+        if (arrayPlace > words.get(arrayPlace).length())
+        {
+            return "";
+        }
+
+        return output + checkUserWord(words, input, arrayPlace++);
+    }
+    
 }
