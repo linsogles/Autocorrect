@@ -2,7 +2,7 @@ package program1;
 import java.io.File;
 public class Dictionary
 {
-    public static boolean checkWord(String dictWord, String wordToCheck, int place)
+    public static String checkWord(String dictWord, String wordToCheck, int place)
     {
      
         int difs = 0; //allow for only one difference btwn words
@@ -17,11 +17,11 @@ public class Dictionary
                 }
                 if (difs > 2) //if more than 2 differences found
                 {
-                    return false;
+                    return dictWord;
                 }
             }
         }
 
-        return true;
+        return "";
     }
 }
