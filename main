@@ -28,18 +28,16 @@ public class Program1 {
         Scanner keyboard = new Scanner (System.in);
         String input;	// allows user input as string
         input = keyboard.nextLine(); //grabs text message
-        
-        
-        String[] nLine = input.split(" ");   //how we break up string
+        String[] tokens = input.split(" "); // Get the tokens, using a space delimiter.
 
         if(input.equals("done")){ //exits the system
           break;
         } 
         else { //prints user input followed by similar words
-            for ( String ss : nLine) {
-
-                  System.out.println(ss+":");
-             }
+            // Display the tokens
+            for(String s : tokens)
+            System.out.println(s+":");   
+        }
         }      
       }
     } 
