@@ -7,11 +7,20 @@ public class Program1 {
         System.out.println("Enter a text message, or type done to exit:"); //prompts user
         Scanner keyboard = new Scanner (System.in);
         String input;	// allows user input as string
-        input = keyboard.nextLine(); 
+        input = keyboard.nextLine(); //grabs text message
+        
+        
+        String[] nLine = input.split(" ");   //how we break up string
+
         if(input.equals("done")){ //exits the system
           break;
-        }       
+        } 
+        else { //prints user input followed by similar words
+            for ( String ss : nLine) {
+
+                  System.out.println(ss+":");
+             }
+        }      
       }
-    }
-    
+    } 
 }
