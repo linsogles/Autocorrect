@@ -78,52 +78,31 @@ public class Keyboard {
     }
     
     public static boolean checkTwoWords(String word1, String word2) {
-        //creates 3 seperate arrays acting as keyboard
-        //char[] keyboard1line = {'q','w','e','r','t','y','u','i','o','p'};
-        //char[] keyboard2line = {'a','s','d','f','g','h','j','k','l'};
-        //char[] keyboard3line = {'z','x','c','v','b','n','m'}; 
-        
-        //String line1 = "qwertyuiop";
-        //String line2 = "asdfghjkl";
-        //String line3 = "zxcvbnm";
-        //String charsToCheck = "";
-        
-        //based on user_input and true boolean to same word size
-        //returns words surrounding user input
-        
-        //walks through arrays with letter
-        //closest to first word
-        
-        //checks left & right if available 
-        //MAKE SURE NOT OUT OF BOUNDS - DOESNT CHECK LEFT IF A
-        
-        //returns boolean
         
         for (int i=0; i < word1.length()-1; i++) //for entirety of word 1
         {
-            String charsToCheck = getCharsToCheck(word1.charAt(i)); //get characters to check, any characters near original on keyboard
             
-            for (int n=0; n < charsToCheck.length()-1; n++) //for entirety of string of characters to check
+            int difs = 0; //start with 0 recorded differences
+
+            if (word1.charAt(i) == word2.charAt(i)) //if character at index n is identical btwn words
             {
-                int difs = 0; //start with 0 recorded differences
-                
-                if (word1.charAt(n) == word2.charAt(n)) //if character at index n is identical btwn words
-                {
-                    difs += 0; //do not add a difference
-                }
-                if (possibleReplacement(word1.charAt(n)) == true) //if character at index n is a possible replacement
-                {
-                    difs++; //add a difference
-                }
-                if (difs > 1) //if there is more than 1 difference
-                {
-                    return false; //return false, words are not a match
-                }
-                
+                difs += 0; //do not add a difference
             }
+            if (possibleReplacement(word1.charAt(i)) == true) //if character at index n is a possible replacement
+            {
+                difs++; //add a difference
+            }
+            if (possibleReplacement(word1.charAt(i)) == false) //if character is not a possible replacement
+            {
+                return false; //return false, words are not a match
+            }
+            if (difs > 1) //if there is more than 1 difference
+            {
+                return false; //return false, words are not a match
+            }
+                
 	}
         return true;
     }
-    
-    
+     
 }
