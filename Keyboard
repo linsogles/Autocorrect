@@ -1,12 +1,88 @@
+/* Linda Oglesbee and Maia Prince
+Program 1
+01/16/2018
+This program checks a text message against a .txt file of dictionary words.
+ */
+
 package program1;
 
 public class Keyboard {
-    public static void main(String[] args) {
+    
+    //Find characters close to a given character on the keyboard.
+    public static String getCharsToCheck(char input)
+    {
+        String output = ""; //Initialize output string.
+        //Cases for alphanumerical characters.
+        if (input == 'q') //character input
+            output = "wa"; //characters near input character on keyboard
+        if (input == 'w')
+            output = "qse";
+        if (input == 'e')
+            output = "rdw";
+        if (input == 'r')
+            output = "eft";
+        if (input =='t')
+            output = "ygr";
+        if (input == 'y')
+            output = "thu";
+        if (input == 'u')
+            output = "yji";
+        if (input == 'i')
+            output = "uko";
+        if (input == 'o')
+            output = "ilp";
+        if (input == 'p')
+            output = "ol";
+        if (input == 'a')
+            output = "qsz";
+        if (input == 's')
+            output = "wdaxz";
+        if (input == 'd')
+            output = "esfcx";
+        if (input == 'f')
+            output = "rgvdc";
+        if (input == 'g')
+            output = "thfbv";
+        if (input == 'h')
+            output = "ygjbn";
+        if (input == 'j')
+            output = "hkmnu";
+        if (input == 'k')
+            output = "jilm";
+        if (input == 'l')
+            output = "kop";
+        if (input == 'z')
+            output = "asx";
+        if (input == 'x')
+            output = "zcsd";
+        if (input == 'c')
+            output = "xdfv";
+        if (input == 'v')
+            output = "xvdf";
+        if (input == 'b')
+            output = "vngh";
+        if (input == 'n')
+            output = "bmhj";
+        if (input == 'm')
+            output = "nkj";
+        //empty output for non-alphanumeric characters, just in case
+        else
+            output = "";
+        
+        return output;
+    }
+    
+    public static boolean checkTwoWords(String word1, String word2) {
         //creates 3 seperate arrays acting as keyboard
-        char[] keyboard1line = {'q','w','e','r','t','y','u','i','o','p'};
-        char[] keyboard2line = {'a','s','d','f','g','h','j','k','l'};
-        char[] keyboard3line = {'z','x','c','v','b','n','m'}; 
-       
+        //char[] keyboard1line = {'q','w','e','r','t','y','u','i','o','p'};
+        //char[] keyboard2line = {'a','s','d','f','g','h','j','k','l'};
+        //char[] keyboard3line = {'z','x','c','v','b','n','m'}; 
+        
+        //String line1 = "qwertyuiop";
+        //String line2 = "asdfghjkl";
+        //String line3 = "zxcvbnm";
+        //String charsToCheck = "";
+        
         //based on user_input and true boolean to same word size
         //returns words surrounding user input
         
@@ -16,16 +92,26 @@ public class Keyboard {
         //checks left & right if available 
         //MAKE SURE NOT OUT OF BOUNDS - DOESNT CHECK LEFT IF A
         
-        //returns array list of strings
+        //returns boolean
         
-        int current; //position of user word
-        int i,j; //position of next word checking
-        for (i=0;j<keyboard1line.length;j++) {
-			current =j; //user_input???
-			j =keyboard1line[current];
-		}
-        
-        
-        
+        for (int i=0; i < word1.length()-1; i++) //for entirety of word 1
+        {
+            String charsToCheck = getCharsToCheck(word1.charAt(i)); //get characters to check, any characters near original on keyboard
+            
+            for (int n=0; n < charsToCheck.length()-1; n++) //for entirety of string of characters to check
+            {
+                int difs = 0; //start with 0 recorded differences
+                
+                if (word2.charAt(n) == charsToCheck.charAt(n)) //if characters match, btwn character checked in dictionary word and characters to check
+                    return false;
+                else //if characters do match, that is, if a character is one of its possible replacements
+                    difs++;
+                if (difs > 1)
+                    return false;
+            }
+	}
+        return true;
     }
+    
+    
 }
