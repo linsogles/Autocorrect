@@ -34,7 +34,7 @@ public class Program1 {
         String input;	// allows user input as string
         input = keyboard.nextLine(); //grabs text message
         input = input.toLowerCase(); //converts input to lowercase
-        input = input.replaceAll("[^A-Za-z]+", ""); //replaces all non-alphanumerical characters
+        input = input.replaceAll("[^A-Za-z]+", " "); //replaces all non-alphanumerical characters
         
         String[] inputArray = input.split(" "); // Get the tokens, using a space delimiter.
         
