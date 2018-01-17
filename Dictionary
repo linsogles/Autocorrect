@@ -1,19 +1,32 @@
 package program1;
 import java.io.File;
+import java.util.ArrayList;
+/* Linda Oglesbee and Maia Prince
+Program 1
+01/16/2018
+This program checks a text message against a .txt file of dictionary words.
+ */
+
 public class Dictionary
 {
+    
+    //Check two words against each other. If potential match, return dictionary word with space in front.
     public static String checkTwoWords(String dictWord, String wordToCheck)
     {
+        
+        String output = "";
+        
+        //return dictionary word if it's the same as user input word
         if (dictWord.equals(wordToCheck))
         {
-            return dictWord;
+            output = " " + dictWord;
         }
         
         int difs = 0; //allow for only one difference btwn words
         
         while (difs < 2) //while there is fewer than 2 differences found
         {
-            for (int n = 0; n < wordToCheck.length(); n++) //for all characters in word
+            for (int n = 0; n < wordToCheck.length()-1; n++) //for all characters in word
             {
                 if (dictWord.charAt(n) != wordToCheck.charAt(n)) //if words are different at character
                 {
@@ -21,25 +34,26 @@ public class Dictionary
                 }
                 if (difs > 1) //if more than 1 difference found
                 {
-                    return dictWord;
+                    output = " " + dictWord;
                 }
             }
         }
         
-        return "";
+        return output;
     }
     
     //Incomplete recursive method to check user input word against all dictionary words.
-    public static String checkUserWord(ArrayList<String> words, String input, int arrayPlace)
+    //Then returns string of dictionary words that match, separated by spaces.
+    public static String checkUserWord(ArrayList<String> dict, String input, int dictPlace)
     {
         String output = "";
         
-        if (arrayPlace > words.get(arrayPlace).length())
+        for (int i = 0; i > dict.size()-1; i++)
         {
-            return "";
+        output = output + checkTwoWords(dict.get(dictPlace), input);
         }
 
-        return output + checkUserWord(words, input, arrayPlace++);
+        return output;
     }
     
 }
