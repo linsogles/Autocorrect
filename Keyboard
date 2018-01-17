@@ -1,108 +1,80 @@
 package program1;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.ArrayList;
 
-public class Keyboard {
+public class Program1 {
+
+    public static void main(String[] args) throws FileNotFoundException {
     
-    //Find characters close to a given character on the keyboard.
-    public static String getCharsToCheck(char input)
-    {
-        String output = ""; //Initialize output string.
-        //Cases for alphanumerical characters.
-        if (input == 'q') //character input
-            output = "wa"; //characters near input character on keyboard
-        if (input == 'w')
-            output = "qse";
-        if (input == 'e')
-            output = "rdw";
-        if (input == 'r')
-            output = "eft";
-        if (input =='t')
-            output = "ygr";
-        if (input == 'y')
-            output = "thu";
-        if (input == 'u')
-            output = "yji";
-        if (input == 'i')
-            output = "uko";
-        if (input == 'o')
-            output = "ilp";
-        if (input == 'p')
-            output = "ol";
-        if (input == 'a')
-            output = "qsz";
-        if (input == 's')
-            output = "wdaxz";
-        if (input == 'd')
-            output = "esfcx";
-        if (input == 'f')
-            output = "rgvdc";
-        if (input == 'g')
-            output = "thfbv";
-        if (input == 'h')
-            output = "ygjbn";
-        if (input == 'j')
-            output = "hkmnu";
-        if (input == 'k')
-            output = "jilm";
-        if (input == 'l')
-            output = "kop";
-        if (input == 'z')
-            output = "asx";
-        if (input == 'x')
-            output = "zcsd";
-        if (input == 'c')
-            output = "xdfv";
-        if (input == 'v')
-            output = "xvdf";
-        if (input == 'b')
-            output = "vngh";
-        if (input == 'n')
-            output = "bmhj";
-        if (input == 'm')
-            output = "nkj";
-        //empty output for non-alphanumeric characters, just in case
-        else
-            output = "";
+       //Convert words.txt to ArrayList.
         
-        return output;
-    }
-    
-    public static boolean possibleReplacement(char check)
-    {
-        String possibleReplacements = getCharsToCheck(check);
-        for (int i=0; i < possibleReplacements.length()-1; i++)
-        {
-            if (check == possibleReplacements.charAt(i))
-                return true;
-        }
-        return false;
-    }
-    
-    public static boolean checkTwoWords(String word1, String word2) {
+        File wordsFile = new File ("words.txt"); //create file object to retrieve from words.txt
+        ArrayList<String> dictArray = new ArrayList<String>(); //initialize array for holding words.txt
         
-        for (int i=0; i < word1.length()-1; i++) //for entirety of word 1
+        if (wordsFile.exists())
         {
+            Scanner fileRead = new Scanner(wordsFile); //create scanner using data from .txt file
             
-            int difs = 0; //start with 0 recorded differences
-
-            if (word1.charAt(i) == word2.charAt(i)) //if character at index n is identical btwn words
+            while (fileRead.hasNext())
             {
-                difs += 0; //do not add a difference
+                dictArray.add(fileRead.nextLine());
             }
-            if (possibleReplacement(word1.charAt(i)) == true) //if character at index n is a possible replacement
+        }
+        else
+        {
+            //FileNotFoundException
+            System.out.println("File not found.");
+        }
+    
+       while(true){
+        System.out.println("Enter a text message, or type done to exit:"); //prompts user
+        Scanner keyboard = new Scanner (System.in); //initialize keyboard scanner
+        String input;	// allows user input as string
+        input = keyboard.nextLine(); //grabs text message
+        input = input.toLowerCase(); //converts input to lowercase
+        input = input.replaceAll("[^A-Za-z]+", " "); //replaces all non-alphanumerical characters
+        
+        String[] inputArray = input.split(" "); // Get the tokens, using a space delimiter.
+        
+        if(input.equals("done")){ //exits the system
+          break;
+        } 
+        else { //prints user input followed by similar words
+            
+            for (int i=0; i < inputArray.length; i++) //for entirety of user input string
             {
-                difs++; //add a difference
+                System.out.print(inputArray[i] + ":"); //print word being checked, with : for output syntax
+                for (int n=0; n < dictArray.size(); n++) //for entirety of dictionary
+                {
+                    if (inputArray[i].length() == dictArray.get(n).length()) //if the length of both words is the same
+                    { 
+                        //Run keyboard method. Print words that match.
+                        
+                        if (Keyboard.checkTwoWords(inputArray[i],dictArray.get(n)) == true) //if the dictionary word is a valid potential match for the user word
+                        { 
+                            System.out.print(" " + dictArray.get(n));
+                        }
+                        if (Keyboard.checkTwoWords(inputArray[i],dictArray.get(n)) == false) //if the dictionary word is a valid potential match for the user word
+                        { 
+                            System.out.print("Words don't match.");
+                        }                    
+                    } 
+                }
+                System.out.println(""); //print newline character to move to next word or prompt
+   
             }
-            if (possibleReplacement(word1.charAt(i)) == false) //if character is not a possible replacement
-            {
-                return false; //return false, words are not a match
-            }
-            if (difs > 1) //if there is more than 1 difference
-            {
-                return false; //return false, words are not a match
-            }
-                
-	}
-        return true;
-    }
-     
+            /* Debug for testing checkTwoWords method.
+            String word1 = inputArray[0];
+            String word2 = inputArray[1];
+            if (Keyboard.checkTwoWords(word1,word2) == true)
+                System.out.println("Words match.");
+            else
+                System.out.println("Words do not match.");
+            */
+        }  
+      }
+       
+    } 
 }
