@@ -30,28 +30,37 @@ public class Program1 {
     
        while(true){
         System.out.println("Enter a text message, or type done to exit:"); //prompts user
-        Scanner keyboard = new Scanner (System.in);
+        Scanner keyboard = new Scanner (System.in); //initialize keyboard scanner
         String input;	// allows user input as string
         input = keyboard.nextLine(); //grabs text message
-        String[] tokens = input.split(" "); // Get the tokens, using a space delimiter.
+        input = input.toLowerCase(); //converts input to lowercase
+        input = input.replaceAll("[^A-Za-z]+", ""); //replaces all non-alphanumerical characters
+        
+        String[] inputArray = input.split(" "); // Get the tokens, using a space delimiter.
         
         if(input.equals("done")){ //exits the system
           break;
         } 
         else { //prints user input followed by similar words
-            // Display the tokens
-            for(int i = 0; i < tokens.length; i++)
+            
+            for (int i=0; i < inputArray.length-1; i++) //for entirety of user input string
             {
-            System.out.println(tokens[i]+":" + Dictionary.checkUserWord(dictArray,tokens[i],0));   
-            }   
+                System.out.print(inputArray[i] + ":"); //print word being checked, with : for output syntax
+                for (int n=0; n < dictArray.size()-1; n++) //for entirety of dictionary
+                {
+                    if (inputArray[i].length() == dictArray.get(n).length()) //if the length of both words is the same
+                    {
+                        //Run keyboard method. Print words that match.
+                        if (kbMethod(inputArray[i],dictArray.get(n)) == true) //if the dictionary word is a valid potential match for the user word
+                        {
+                            System.out.print(" " + dictArray.get(n));
+                        }
+                    } 
+                }
+   
+            }
+
         }  
       }
     } 
 }
-
-/* debug main method for checking method checkTwoWords
-        Scanner kb = new Scanner (System.in);
-        String word1 = kb.nextLine();
-        String word2 = kb.nextLine();
-        System.out.println(Dictionary.checkTwoWords(word1,word2));
-*/
