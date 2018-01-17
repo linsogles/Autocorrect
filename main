@@ -51,7 +51,7 @@ public class Program1 {
                     if (inputArray[i].length() == dictArray.get(n).length()) //if the length of both words is the same
                     {
                         //Run keyboard method. Print words that match.
-                        if (kbMethod(inputArray[i],dictArray.get(n)) == true) //if the dictionary word is a valid potential match for the user word
+                        if (Keyboard.checkTwoWords(inputArray[i],dictArray.get(n)) == true) //if the dictionary word is a valid potential match for the user word
                         {
                             System.out.print(" " + dictArray.get(n));
                         }
