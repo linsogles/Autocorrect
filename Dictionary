@@ -1,9 +1,3 @@
-/* Linda Oglesbee and Maia Prince
-Program 1
-01/16/2018
-This program checks a text message against a .txt file of dictionary words.
- */
-
 package program1;
 import java.io.File;
 import java.util.ArrayList;
