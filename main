@@ -1,13 +1,21 @@
+/* Linda Oglesbee and Maia Prince
+Program 1
+01/16/2018
+This program checks a text message against a .txt file of dictionary words.
+ */
+
 package program1;
-import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 import java.util.ArrayList;
+
 public class Program1 {
 
     public static void main(String[] args) throws FileNotFoundException {
     
        //Convert words.txt to ArrayList.
+        
         File wordsFile = new File ("words.txt"); //create file object to retrieve from words.txt
         ArrayList<String> dictArray = new ArrayList<String>(); //initialize array for holding words.txt
         
@@ -23,7 +31,7 @@ public class Program1 {
         else
         {
             //FileNotFoundException
-            System.out.println("FILE NOT FOUND"); // do i need this
+            System.out.println("File not found.");
         }
     
        while(true){
@@ -32,23 +40,19 @@ public class Program1 {
         String input;	// allows user input as string
         input = keyboard.nextLine(); //grabs text message
         String[] tokens = input.split(" "); // Get the tokens, using a space delimiter.
-
+        
         if(input.equals("done")){ //exits the system
           break;
         } 
-        
-        for(String s : tokens){
-            if (true){ //prints user input followed by similar words
-                // Display the tokens
-                //for(String s : tokens)
-                System.out.println(s+":"+ Dictionary.checkUserWord(dictArray,tokens[1],0));        
-            }
-            else {
-                System.out.println (s+":"+"NOT FOUND");
-            }
-            }
-        }
-    }      
+        else { //prints user input followed by similar words
+            // Display the tokens
+            for(int i = 0; i < tokens.length; i++)
+            {
+            System.out.println(tokens[i]+":" + Dictionary.checkUserWord(dictArray,tokens[i],0));   
+            }   
+        }  
+      }
+    } 
 }
 
 /* debug main method for checking method checkTwoWords
