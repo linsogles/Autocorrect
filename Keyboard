@@ -1,0 +1,31 @@
+package program1;
+
+public class Keyboard {
+    public static void main(String[] args) {
+        //creates 3 seperate arrays acting as keyboard
+        char[] keyboard1line = {'q','w','e','r','t','y','u','i','o','p'};
+        char[] keyboard2line = {'a','s','d','f','g','h','j','k','l'};
+        char[] keyboard3line = {'z','x','c','v','b','n','m'}; 
+       
+        //based on user_input and true boolean to same word size
+        //returns words surrounding user input
+        
+        //walks through arrays with letter
+        //closest to first word
+        
+        //checks left & right if available 
+        //MAKE SURE NOT OUT OF BOUNDS - DOESNT CHECK LEFT IF A
+        
+        //returns array list of strings
+        
+        int current; //position of user word
+        int i,j; //position of next word checking
+        for (i=0;j<keyboard1line.length;j++) {
+			current =j; //user_input???
+			j =keyboard1line[current];
+		}
+        
+        
+        
+    }
+}
