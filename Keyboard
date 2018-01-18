@@ -73,7 +73,7 @@ public class Keyboard {
         for (int i=0; i < possibleReplacements.length()-1; i++)
         {
             if (dictChar == possibleReplacements.charAt(i)) //Take two input characters. Determine if possible replacements string, as dictated by input char 1, contains input char 2.
-                System.out.println("Possible replacement found.");
+                System.out.println("Possible replacement found."); //debug
                 return true;
         }
         return false;
@@ -107,7 +107,7 @@ public class Keyboard {
             }
                 
 	}
-        System.out.print("Word is a match.");
+        System.out.print("Word is a match."); //debug
         return true;
     }
      
