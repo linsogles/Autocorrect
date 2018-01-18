@@ -5,79 +5,74 @@ public class Keyboard {
     //Find characters close to a given character on the keyboard.
     public static String getCharsToCheck(char input)
     {
-        String output = ""; //Initialize output string.
         //Cases for alphanumerical characters.
         if (input == 'q') //character input
-            output = "wa"; //characters near input character on keyboard
+            return "wa"; //characters near input character on keyboard       
         if (input == 'w')
-            output = "qse";
+            return "qse";
         if (input == 'e')
-            output = "rdw";
+            return "rdw";
         if (input == 'r')
-            output = "eft";
+            return "eft";
         if (input =='t')
-            output = "ygr";
+            return "ygr";
         if (input == 'y')
-            output = "thu";
+            return "thu";
         if (input == 'u')
-            output = "yji";
+            return "yji";
         if (input == 'i')
-            output = "uko";
+            return "uko";
         if (input == 'o')
-            output = "ilp";
+            return "ilp";
         if (input == 'p')
-            output = "ol";
+            return "ol";
         if (input == 'a')
-            output = "qsz";
+            return "qsz";
         if (input == 's')
-            output = "wdaxz";
+            return "wdaxz";
         if (input == 'd')
-            output = "esfcx";
+            return "esfcx";
         if (input == 'f')
-            output = "rgvdc";
+            return "rgvdc";
         if (input == 'g')
-            output = "thfbv";
+            return "thfbv";
         if (input == 'h')
-            output = "ygjbn";
+            return "ygjbn";
         if (input == 'j')
-            output = "hkmnu";
+            return "hkmnu";
         if (input == 'k')
-            output = "jilm";
+            return "jilm";
         if (input == 'l')
-            output = "kop";
+            return "kop";
         if (input == 'z')
-            output = "asx";
+            return "asx";
         if (input == 'x')
-            output = "zcsd";
+            return "zcsd";
         if (input == 'c')
-            output = "xdfv";
+            return "xdfv";
         if (input == 'v')
-            output = "xvdf";
+            return "xvdf";
         if (input == 'b')
-            output = "vngh";
+            return "vngh";
         if (input == 'n')
-            output = "bmhj";
+            return "bmhj";
         if (input == 'm')
-            output = "nkj";
+            return "nkj";
         //empty output for non-alphanumeric characters, just in case
         else
-            output = "";
-        
-        return output;
+            return "";
     }
     
     public static boolean possibleReplacement(char inputChar, char dictChar)
     {
         String possibleReplacements = getCharsToCheck(inputChar);
         
-        for (int i=0; i < possibleReplacements.length()-1; i++)
+        for (int i=0; i > possibleReplacements.length()-1; i++)
         {
-            if (dictChar == possibleReplacements.charAt(i)) //Take two input characters. Determine if possible replacements string, as dictated by input char 1, contains input char 2.
-                System.out.println("Possible replacement found."); //debug
+            if (dictChar == possibleReplacements.charAt(i)) //Determine if possible replacements string, as dictated by input char 1, contains input char 2.
                 return true;
         }
         return false;
-        
         
     }
     
@@ -94,6 +89,7 @@ public class Keyboard {
             }
             else if (possibleReplacement(word1.charAt(i), word2.charAt(i)) == true) //if character at index n is a possible replacement
             {
+                System.out.println("Replacement found. Difference added.");
                 difs++; //add a difference
             }
             else //if character is not a possible replacement or identical btwn words
@@ -101,13 +97,12 @@ public class Keyboard {
                 return false; //return false, words are not a match
             }
             
-            if (difs > 1) //if there is more than 1 difference
+            if (difs > 1) //if there is exactly 1 difference
             {
                 return false; //return false, words are not a match
             }
                 
 	}
-        System.out.print("Word is a match."); //debug
         return true;
     }
      
