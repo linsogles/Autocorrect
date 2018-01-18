@@ -42,37 +42,20 @@ public class Program1 {
           break;
         } 
         else { //prints user input followed by similar words
-            
-            for (int i=0; i < inputArray.length; i++) //for entirety of user input string
+            for (String inputArray1 : inputArray) //for entirety of user input string
             {
-                System.out.print(inputArray[i] + ":"); //print word being checked, with : for output syntax
-                for (int n=0; n < dictArray.size(); n++) //for entirety of dictionary
+                System.out.print(inputArray1 + ":"); //print word being checked, with : for output syntax
+                for (int n = 0; n < dictArray.size(); n++) //for entirety of dictionary
                 {
-                    if (inputArray[i].length() == dictArray.get(n).length()) //if the length of both words is the same
-                    { 
+                    if (inputArray1.length() == dictArray.get(n).length()) { 
                         //Run keyboard method. Print words that match.
-                        
-                        if (Keyboard.checkTwoWords(inputArray[i],dictArray.get(n)) == true) //if the dictionary word is a valid potential match for the user word
-                        { 
+                        if (Keyboard.checkTwoWords(inputArray1, dictArray.get(n)) == true) { 
                             System.out.print(" " + dictArray.get(n));
                         }
-                        if (Keyboard.checkTwoWords(inputArray[i],dictArray.get(n)) == false) //if the dictionary word is a valid potential match for the user word
-                        { 
-                            System.out.print("Words don't match.");
-                        }                    
                     } 
                 }
                 System.out.println(""); //print newline character to move to next word or prompt
-   
             }
-            /* Debug for testing checkTwoWords method.
-            String word1 = inputArray[0];
-            String word2 = inputArray[1];
-            if (Keyboard.checkTwoWords(word1,word2) == true)
-                System.out.println("Words match.");
-            else
-                System.out.println("Words do not match.");
-            */
         }  
       }
        
