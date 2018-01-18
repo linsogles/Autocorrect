@@ -66,13 +66,14 @@ public class Keyboard {
         return output;
     }
     
-    public static boolean possibleReplacement(char check)
+    public static boolean possibleReplacement(char inputChar, char dictChar)
     {
-        String possibleReplacements = getCharsToCheck(check);
-        for (int i=0; i < possibleReplacements.length(); i++)
+        String possibleReplacements = getCharsToCheck(inputChar);
+        
+        for (int i=0; i < possibleReplacements.length()-1; i++)
         {
-            if (check == possibleReplacements.charAt(i))
-                System.out.println("Possible replaced character found.");
+            if (dictChar == possibleReplacements.charAt(i)) //Take two input characters. Determine if possible replacements string, as dictated by input char 1, contains input char 2.
+                System.out.println("Possible replacement found.");
                 return true;
         }
         return false;
@@ -82,23 +83,24 @@ public class Keyboard {
     
     public static boolean checkTwoWords(String word1, String word2) {
         
+        int difs = 0; //start with 0 recorded differences
+        
         for (int i=0; i < word1.length()-1; i++) //for entirety of word 1
         {
-            
-            int difs = 0; //start with 0 recorded differences
 
             if (word1.charAt(i) == word2.charAt(i)) //if character at index n is identical btwn words
             {
                 difs += 0; //do not add a difference
             }
-            if (possibleReplacement(word1.charAt(i)) == true) //if character at index n is a possible replacement
+            else if (possibleReplacement(word1.charAt(i), word2.charAt(i)) == true) //if character at index n is a possible replacement
             {
                 difs++; //add a difference
             }
-            if (possibleReplacement(word1.charAt(i)) == false) //if character is not a possible replacement
+            else //if character is not a possible replacement or identical btwn words
             {
                 return false; //return false, words are not a match
             }
+            
             if (difs > 1) //if there is more than 1 difference
             {
                 return false; //return false, words are not a match
